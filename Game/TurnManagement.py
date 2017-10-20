@@ -7,19 +7,31 @@ class TurnManagement():
 	firstTurnPlayer = 1
 	
 	def SetCurrentPlayer(self, player):
-		pass
-		
+		TurnManagement.currentPlayer = player
+	
 	def GetCurrentPlayer(self):
-		pass
+		return TurnManagement.currentPlayer
 	
 	def ChangePlayer(self):
-		pass
+		if(TurnManagement.currentPlayer == TurnManagement.playerOne):
+			TurnManagement.currentPlayer = TurnManagement.playerTwo
+		else:
+			TurnManagement.currentPlayer = TurnManagement.playerOne
 		
 	def NewGame(self):
-		pass
+		if(TurnManagement.firstTurnPlayer == TurnManagement.playerOne):
+			TurnManagement.currentPlayer = TurnManagement.playerTwo
+			TurnManagement.firstTurnPlayer = TurnManagement.playerTwo
+		elif(TurnManagement.firstTurnPlayer == TurnManagement.playerTwo):
+			TurnManagement.currentPlayer = TurnManagement.playerOne
+			TurnManagement.firstTurnPlayer = TurnManagement.playerTwo
+		#TurnManagement.currentPlayer = TurnManagement.firstTurnPlayer
 		
 	def WinnerFound(self, hasWon):
-		pass
+		if(hasWon==1):
+			return True
+		else:
+			return False
 
 if debug:
 	tm = TurnManagement()
