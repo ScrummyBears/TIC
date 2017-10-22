@@ -54,10 +54,20 @@ class WinLogic:
 			return False
 			
 
-	def isCatsGame(self):
-		pass
+	def isCatsGame(self, player1, player2):
+		for r in range(2):
+			for c in range(2):
+				if self.matrix[r][c] == 0:
+					return False
 
-	
+		if self.hasPlayerWon(player1):
+			return False
+		if self.hasPlayerWon(player2):
+			return False
+		return True
+
+
+
 m = WinLogic()
 if m.debug:
 	m.SetPlayer("test")

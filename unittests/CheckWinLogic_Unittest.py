@@ -145,7 +145,7 @@ class CheckWinLogic(unittest.TestCase):
 		win.SetGrid(player2, 1, 1)
 		win.SetGrid(player2, 1, 2)
 		win.SetGrid(player2, 2, 1)
-		self.assertTrue(win.isCatsGame())
+		self.assertTrue(win.isCatsGame(player1, player2))
 
 	def test_isCatsGame_CaseFalse_BoardNotFull(self):
 		win = WinLogic()
@@ -159,7 +159,7 @@ class CheckWinLogic(unittest.TestCase):
 		win.SetGrid(player2, 1, 1)
 		win.SetGrid(player2, 1, 2)
 		win.SetGrid(player2, 2, 1)
-		self.assertFalse(win.isCatsGame())
+		self.assertFalse(win.isCatsGame(player1, player2))
 
 	def test_isCatsGame_CaseFalse_WinnerExists(self):
 		win = WinLogic()
@@ -176,7 +176,7 @@ class CheckWinLogic(unittest.TestCase):
 		win.SetGrid(player2, 1, 0)
 		win.SetGrid(player2, 1, 2)
 		win.SetGrid(player2, 2, 0)
-		self.assertFalse(win.isCatsGame())
+		self.assertFalse(win.isCatsGame(player1, player2))
 
 
 #unittest.main()
