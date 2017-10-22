@@ -130,6 +130,23 @@ class CheckWinLogic(unittest.TestCase):
 		win.SetGrid("Player2",0,2)
 		self.assertFalse(win.hasPlayerWon(player)) #lose case 1
 
+	def test_isCatsGame(self):
+		win = WinLogic()
+		player1 = "Player1"
+		player2 = "Player2"
+		win.SetPlayer(player1)
+		win.ClearMatrix()
+		win.SetGrid(player1, 0, 1)
+		win.SetGrid(player1, 0, 2)
+		win.SetGrid(player1, 1, 0)
+		win.SetGrid(player1, 2, 0)
+		win.SetGrid(player1, 2, 2)
+		win.SetGrid(player2, 0, 0)
+		win.SetGrid(player2, 1, 1)
+		win.SetGrid(player2, 1, 2)
+		win.SetGrid(player2, 2, 1)
+		self.assertTrue(win.isCatsGame())
+
 #unittest.main()
 if __name__ == '__main__':
 	#hasPayerWon()
