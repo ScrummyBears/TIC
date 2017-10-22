@@ -54,6 +54,10 @@ class WinLogic:
 			return False
 			
 
+	def isCatsGame(self):
+		pass
+
+	
 m = WinLogic()
 if m.debug:
 	m.SetPlayer("test")
