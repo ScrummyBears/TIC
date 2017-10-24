@@ -1,5 +1,5 @@
 #This can run independently
-import unittest, sys, os, unittest.mock
+import unittest, sys, os#, unittest.mock
 
 #modifying sys path to import MenuLogic
 lib_path = os.path.abspath(os.path.join('..','Game'))
