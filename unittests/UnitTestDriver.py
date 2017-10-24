@@ -1,25 +1,19 @@
 import unittest, os, sys
 
+#TO USE: place unit test file name (W/O py) in the list of imports and include it in the test_to_run list
+
 #import the actual unit test
 import CheckWinLogic_Unittest, CheckCatsGame_Unittest, TurnManagement_Unittest, MenuLogic_Unittest
 
+#initiate test suite to run 
+alltests = unittest.TestSuite()
 
-#Loading the test individually
-Test_CheckWinLogic = unittest.TestLoader().loadTestsFromModule(CheckWinLogic_Unittest)
-Test_CheckCatsGame = unittest.TestLoader().loadTestsFromModule(CheckCatsGame_Unittest)
-Test_TurnManagement = unittest.TestLoader().loadTestsFromModule(TurnManagement_Unittest)
-Test_MenuLogic = unittest.TestLoader().loadTestsFromModule(MenuLogic_Unittest)
+#add unittest file to this list
+test_to_run = [CheckWinLogic_Unittest, CheckCatsGame_Unittest, TurnManagement_Unittest, MenuLogic_Unittest]
 
-#Run each test
-print ("\n###################\nChecking CheckWinLogic...\n###################\n")
-unittest.TextTestRunner(verbosity=2).run(Test_CheckWinLogic)
+#appends each test automagially
+for test in test_to_run:
+	alltests.addTest(unittest.TestLoader().loadTestsFromModule(test))
 
-print ("\n###################\nChecking CheckWinLogic - Cats Game...\n###################\n")
-unittest.TextTestRunner(verbosity=2).run(Test_CheckCatsGame)
-
-print ("\n###################\nChecking TurnManagement...\n###################\n")
-unittest.TextTestRunner(verbosity=2).run(Test_TurnManagement)
-
-print ("\n###################\nChecking MenuLogic...\n###################\n")
-unittest.TextTestRunner(verbosity=2).run(Test_MenuLogic)
-
+#runs tests!
+unittest.TextTestRunner(verbosity=2).run(alltests)

@@ -8,7 +8,7 @@ sys.path.append(lib_path)
 from checkWinLogic import WinLogic
 
 #Each def test a specific patern. Hardcoded, yes, but the failure output list per function so 
-class CheckCatsGame(unittest.TestCase):
+class TestCheckCatsGame(unittest.TestCase):
 	def test_isCatsGame_CaseTrue(self):
 		win = WinLogic()
 		player1 = "Player1"
