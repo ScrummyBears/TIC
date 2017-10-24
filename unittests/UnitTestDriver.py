@@ -1,11 +1,18 @@
 import unittest, os, sys
 
-import the actual unit test
+#import the actual unit test
 import CheckWinLogic_Unittest
 
 print ("\n###################\nChecking CheckWinLogic...\n###################\n")
 Test_CheckWinLogic = unittest.TestLoader().loadTestsFromModule(CheckWinLogic_Unittest)
 unittest.TextTestRunner(verbosity=2).run(Test_CheckWinLogic)
+
+import CheckCatsGame_Unittest
+
+print ("\n###################\nChecking CheckWinLogic - Cats Game...\n###################\n")
+Test_CheckCatsGame = unittest.TestLoader().loadTestsFromModule(CheckCatsGame_Unittest)
+unittest.TextTestRunner(verbosity=2).run(Test_CheckCatsGame)
+
 
 import TurnManagement_Unittest
 
@@ -18,3 +25,4 @@ import MenuLogic_Unittest
 print ("\n###################\nChecking MenuLogic...\n###################\n")
 Test_MenuLogic = unittest.TestLoader().loadTestsFromModule(MenuLogic_Unittest)
 unittest.TextTestRunner(verbosity=2).run(Test_MenuLogic)
+
