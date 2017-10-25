@@ -128,55 +128,7 @@ class CheckWinLogic(unittest.TestCase):
 		for i in range(2):
 			win.SetGrid(player,0,i)
 		win.SetGrid("Player2",0,2)
-		self.assertFalse(win.hasPlayerWon(player)) #lose case 1
-
-	def test_isCatsGame_CaseTrue(self):
-		win = WinLogic()
-		player1 = "Player1"
-		player2 = "Player2"
-		win.SetPlayer(player1)
-		win.ClearMatrix()
-		win.SetGrid(player1, 0, 1)
-		win.SetGrid(player1, 0, 2)
-		win.SetGrid(player1, 1, 0)
-		win.SetGrid(player1, 2, 0)
-		win.SetGrid(player1, 2, 2)
-		win.SetGrid(player2, 0, 0)
-		win.SetGrid(player2, 1, 1)
-		win.SetGrid(player2, 1, 2)
-		win.SetGrid(player2, 2, 1)
-		self.assertTrue(win.isCatsGame(player1, player2))
-
-	def test_isCatsGame_CaseFalse_BoardNotFull(self):
-		win = WinLogic()
-		player1 = "Player1"
-		player2 = "Player2"
-		win.SetPlayer(player1)
-		win.ClearMatrix()
-		win.SetGrid(player1, 2, 0)
-		win.SetGrid(player1, 2, 2)
-		win.SetGrid(player2, 0, 0)
-		win.SetGrid(player2, 1, 1)
-		win.SetGrid(player2, 1, 2)
-		win.SetGrid(player2, 2, 1)
-		self.assertFalse(win.isCatsGame(player1, player2))
-
-	def test_isCatsGame_CaseFalse_WinnerExists(self):
-		win = WinLogic()
-		player1 = "Player1"
-		player2 = "Player2"
-		win.SetPlayer(player1)
-		win.ClearMatrix()
-		win.SetGrid(player1, 0, 0)
-		win.SetGrid(player1, 1, 1)
-		win.SetGrid(player1, 2, 2)
-		win.SetGrid(player1, 2, 1)
-		win.SetGrid(player2, 0, 1)
-		win.SetGrid(player2, 0, 2)
-		win.SetGrid(player2, 1, 0)
-		win.SetGrid(player2, 1, 2)
-		win.SetGrid(player2, 2, 0)
-		self.assertFalse(win.isCatsGame(player1, player2))
+		self.assertFalse(win.hasPlayerWon(player)) #lose case 2
 
 
 #unittest.main()
