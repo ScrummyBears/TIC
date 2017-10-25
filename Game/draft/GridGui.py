@@ -8,12 +8,27 @@ class GridGui:
         self.circle = PhotoImage(file = pathCircle)
         self.cross = PhotoImage(file = pathCross)
 
-        self.gameCtrl = None
+        self.P1name = "P1"
+        self.P2name = "P2"
+        self.currentName = StringVar()
+        
+        self.labTurn = None
         
         self.matrixButton = None
 
-    def setControler(self, ctrl):
+        self.gameCtrl = None
+        self.guiCtrl = None
+        
+    def setGameControler(self, ctrl):
         self.gameCtrl = ctrl
+
+    def setGuiControler(self, ctrl):
+        self.guiCtrl = ctrl
+        
+    def setName(self, tupleName):
+        self.P1name = tupleName[0]
+        self.P2name = tupleName[1]
+        self.currentName.set(self.P1name)
         
     def setSquare(self, x, y):
         """Change the square (x,y)"""
@@ -23,16 +38,29 @@ class GridGui:
         if self.gameCtrl.grid.getGrid(x, y) == grid.DEFAULT:
             player = turn.getCurrentPlayer()
             grid.setGrid(player, x, y)
-
+            
             if player == 1:
+                self.currentName.set(self.P2name)
                 self.matrixButton[x][y]["image"] = self.circle
                 
             if player == 2:
+                self.currentName.set(self.P1name)
                 self.matrixButton[x][y]["image"] = self.cross
 
             if grid.hasPlayerWon(x,y):
-                self.can.delete("ALL")
-                print("FIN DU JEU")
+                if player == 1:
+                    self.guiCtrl.gui["end"].setEndTxt("Player 1 won !")
+                    
+                    self.guiCtrl.setState("end")
+
+                if player == 2:
+                    self.guiCtrl.gui["end"].setEndTxt("Player 2 won !")
+                    self.guiCtrl.setState("end")
+
+            elif turn.turn >= 8: # if it is the 9th turn and no one has won
+                self.guiCtrl.gui["end"].setEndTxt("No one won !")
+                self.guiCtrl.setState("end")
+
                 
             turn.changePlayer()
         
@@ -46,6 +74,10 @@ class GridGui:
         
         grille = Frame(can, bg="white",width=600, height=600)
         grille.place(x = 350, y = 50)
+
+        turn = self.gameCtrl.turnHandler
+        
+        self.labTurn = can.create_text(130, 40, text = self.currentName, font=("Rockwell Extra Bold", 15))
         
         self.button_00 = Button(grille, image =  self.button, borderwidth = 1, command = lambda: self.setSquare(0, 0))
         self.button_00.grid(row=1,column = 1)

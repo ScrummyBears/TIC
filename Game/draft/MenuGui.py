@@ -20,11 +20,10 @@ class MenuGui:
         #controler to communicate with the GuiControler
         self.controler = None
 
-    def setControler(self, ctrl):
+    def setGuiControler(self, ctrl):
         self.controler = ctrl
         
     def display(self, can):
-        print("call")
         """Display the background and the button on a given canvas"""
         
         height = int(can.cget("height"))
@@ -52,6 +51,7 @@ class MenuGui:
         """draw the hame interface if the two player set their name"""
         if not (self.entryPlayer1.get().strip() == "" or self.entryPlayer1.get().strip() == ""):
             print(self.getPseudo())
+            self.controler.gui["grid"].setName(self.getPseudo())
             self.controler.setState("grid")
 
     def getPseudo(self):

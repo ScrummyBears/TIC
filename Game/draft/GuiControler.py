@@ -1,15 +1,13 @@
 from tkinter import *
 
-STATES = {"menu", "grid", "P1win", "P2win", "catGame"}
-
 class GuiControler:    
-    def __init__(self, canvas, menu, grid):
+    def __init__(self, canvas, menu, grid, end):
         self.canvas = canvas
-        self.gui = {"menu":menu, "grid":grid}
+        self.gui = {"menu":menu, "grid":grid, "end":end}
         self.state = "null"
     
     def setState(self, state):
-        if state in STATES:
+        if state in self.gui.keys():
             self.state = state
             self.display()
 

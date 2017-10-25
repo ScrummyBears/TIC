@@ -4,7 +4,7 @@ class TurnManagement:
                 self.playerTwo = 2
                 self.currentPlayer = 1
                 self.firstTurnPlayer = 1
-
+                self.turn = 0 #will increment by one each turn
         def setCurrentPlayer(self, player):
                 self.currentPlayer = player
 	
@@ -16,8 +16,11 @@ class TurnManagement:
                         self.currentPlayer = self.playerTwo
                 else:
                         self.currentPlayer = self.playerOne
+
+                self.turn += 1
                 
         def newGame(self):
+                self.turn = 0
                 if(self.firstTurnPlayer == self.playerOne):
                         self.currentPlayer = self.playerTwo
                         self.firstTurnPlayer = self.playerTwo
