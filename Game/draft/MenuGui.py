@@ -57,18 +57,8 @@ class MenuGui:
     def getPseudo(self):
         """return a tuple of length 2 with the current pseudos for the players"""
         return (self.entryPlayer1.get().strip(), self.entryPlayer2.get().strip())
-        
-#-------Test of the class -----------------------
-if __name__ == "__main__":
-    fen = Tk()
-    fen.title("test")
+
+
+
+
     
-    can = Canvas(fen,bg= "white" ,height=700, width=1000)
-    can.pack()
-
-    #menu = MenuGui("images/Menu_GUI.png", "images/PlayButton.png")
-    menu = MenuGui("images/Menu_GUI.gif", "images/PlayButton.gif")
-
-    menu.display(can)
-
-    fen.mainloop()

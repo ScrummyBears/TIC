@@ -4,15 +4,37 @@ class GridGui:
     
     def __init__(self, pathGui, pathButton, pathCircle, pathCross):
         self.gui = PhotoImage(file = pathGui) 
-        self.button = PhotoImage(file = pathButton) #file of the background
+        self.button = PhotoImage(file = pathButton)
         self.circle = PhotoImage(file = pathCircle)
         self.cross = PhotoImage(file = pathCross)
-    
+
+        self.gameCtrl = None
+        
         self.matrixButton = None
 
+    def setControler(self, ctrl):
+        self.gameCtrl = ctrl
+        
     def setSquare(self, x, y):
         """Change the square (x,y)"""
-        pass
+        grid = self.gameCtrl.grid
+        turn = self.gameCtrl.turnHandler
+        
+        if self.gameCtrl.grid.getGrid(x, y) == grid.DEFAULT:
+            player = turn.getCurrentPlayer()
+            grid.setGrid(player, x, y)
+
+            if player == 1:
+                self.matrixButton[x][y]["image"] = self.circle
+                
+            if player == 2:
+                self.matrixButton[x][y]["image"] = self.cross
+
+            if grid.hasPlayerWon(x,y):
+                self.can.delete("ALL")
+                print("FIN DU JEU")
+                
+            turn.changePlayer()
         
     def display(self, can):
         """Display the GUI on a given canvas"""
@@ -53,7 +75,8 @@ class GridGui:
         self.button_22.grid(row=3,column = 3)
 
         self.matrixButton = [[self.button_00, self.button_01, self.button_02],
-            [self.button_10, self.button_11, self.button_12], [self.button_20, self.button_21, self.button_22]]
+            [self.button_10, self.button_11, self.button_12],
+                             [self.button_20, self.button_21, self.button_22]]
 
 #--------------------------Test of the class ----------------------
 if __name__ == "__main__":
