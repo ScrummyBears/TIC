@@ -6,16 +6,23 @@ class MenuGui:
         self.gui = PhotoImage(file = pathGui) #file of the background
         self.buttonGui = PhotoImage(file = pathButton)#file of the button
 
+        #Button
         self.button = None
-        
+
+        #TextBoxes
         self.entryPlayer1 = None
         self.entryPlayer2 = None
-        
+
+        #Label
         self.lab1 = None
         self.lab2 = None
-        
-        self.isReady = False
 
+        #controler to communicate with the GuiControler
+        self.controler = None
+
+    def setGuiControler(self, ctrl):
+        self.controler = ctrl
+        
     def display(self, can):
         """Display the background and the button on a given canvas"""
         
@@ -41,26 +48,16 @@ class MenuGui:
         self.entryPlayer2.place(x = width/2 ,y = height/2, anchor='center')
         
     def launchGame(self):
-        """turn the flag isReady to true if the two player set their name"""
-        if self.entryPlayer1.get().strip() != "" or self.entryPlayer1.get().strip() != "":
-            self.isReady = True
-            print(self.getPseudo())
+        """draw the hame interface if the two player set their name"""
+        if not (self.entryPlayer1.get().strip() == "" or self.entryPlayer1.get().strip() == ""):
+            self.controler.gui["grid"].setName(self.getPseudo())
+            self.controler.setState("grid")
 
     def getPseudo(self):
-        """return an array of length 2 with the current pseudos for the players"""
-        return [self.entryPlayer1.get().strip(), self.entryPlayer2.get().strip()]
-        
-#-------Test of the class -----------------------
-if __name__ == "__main__"
-    fen = Tk()
-    fen.title("test")
+        """return a tuple of length 2 with the current pseudos for the players"""
+        return (self.entryPlayer1.get().strip(), self.entryPlayer2.get().strip())
+
+
+
+
     
-    can = Canvas(fen,bg= "white" ,height=700, width=1000)
-    can.pack()
-
-    #menu = MenuGui("images/Menu_GUI.png", "images/PlayButton.png")
-    menu = MenuGui("images/Menu_GUI.gif", "images/PlayButton.gif")
-
-    menu.display(can)
-
-    fen.mainloop()

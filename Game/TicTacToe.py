@@ -1,11 +1,18 @@
-from tkinter import *
-from TurnManagement import *
-from GameLogic import *
-from win import *
+import sys 
 
-from MenuGui import *
-from GridGui import *
-from GuiControler import *
+from tkinter import *
+
+sys.path.append(".\gui")
+sys.path.append(".\logic")
+
+from GameLogic import*
+from Turn_Management import*
+
+from GuiControler import*
+from MenuGui import*
+from GridGui import*
+from Win import*
+
 
 class TicTacToe:
     def __init__(self):
@@ -24,10 +31,10 @@ class TicTacToe:
         self.initializeGame()
         
     def initializeGame(self):# initialize the guiControler on the state "menu" : it starts the game
-        menuGui = MenuGui("images/Menu_GUI.gif", "images/PlayButton.gif")
-        gridGui = GridGui("images/GridGui.gif", "images/ButtonGrid.gif",
-                          "images/Circle.gif", "images/Cross.gif")
-        endGui = EndGui("images/end.gif","images/yes.gif","images/no.gif")
+        menuGui = MenuGui("gui/images/Menu_GUI.gif", "gui/images/PlayButton.gif")
+        gridGui = GridGui("gui/images/GridGui.gif", "gui/images/ButtonGrid.gif",
+                          "gui/images/Circle.gif", "gui/images/Cross.gif")
+        endGui = EndGui("gui/images/end.gif","gui/images/yes.gif","gui/images/no.gif")
 
         self.guiCtrl = GuiControler(self.canvas, menuGui, gridGui, endGui)
         
