@@ -7,16 +7,19 @@ class GridGame:
                 self.PLAYER2 = 2
         
         def clearMatrix(self):
+                """Fill the matrix with 0"""
                 self.matrix = [[0 for x in range(3)] for y in range(3)]
 
         def setGrid(self, player, w, h):
+                """set the square of coordinate w, h with the value of player"""
                 self.matrix[w][h] = player
 
         def getGrid(self, w, h):
+                """return the square of coordinate w, h"""
                 return self.matrix[w][h]
 
         def hasPlayerWon(self, x, y):
-                
+                """check if the square in x, y is on a wining line"""
                 if self.getGrid(x, y) != self.DEFAULT:
                         player = self.getGrid(x, y)
 

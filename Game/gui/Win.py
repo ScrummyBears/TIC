@@ -13,18 +13,23 @@ class EndGui:
         self.endTxt = ""
 
     def setEndTxt(self, txt):
+        """Set the text display on the end gui (to say which player did win)"""
         self.endTxt = txt
         
     def setGuiControler(self, ctrl):
+        """Set the Gui controler to allow the gui to communicate whith it"""
         self.guiControler = ctrl
 
     def setGameControler(self, ctrl):
+        """Set the Game controler to allow the gui to communicate whith it"""
         self.gameControler = ctrl
 
     def YES(self):
+        """Relaunch the game (call when the "yes" button of the interface is press)"""
         self.gameControler.reCreate()
         
     def NO(self):
+        """Quit the game (call when the "yes" button of the interface is press)"""
         self.gameControler.window.destroy()
     
     def display(self, can):

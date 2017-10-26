@@ -1,7 +1,6 @@
 from tkinter import *
 
 class MenuGui:
-    
     def __init__(self, pathGui, pathButton):
         self.gui = PhotoImage(file = pathGui) #file of the background
         self.buttonGui = PhotoImage(file = pathButton)#file of the button
@@ -21,6 +20,7 @@ class MenuGui:
         self.controler = None
 
     def setGuiControler(self, ctrl):
+        """Set the Game controler to allow the gui to communicate whith it"""
         self.controler = ctrl
         
     def display(self, can):

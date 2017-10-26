@@ -20,12 +20,15 @@ class GridGui:
         self.guiCtrl = None
         
     def setGameControler(self, ctrl):
+        """Set the Game controler to allow the gui to communicate whith it"""
         self.gameCtrl = ctrl
 
     def setGuiControler(self, ctrl):
+        """Set the Gui controler to allow the gui to communicate whith it"""
         self.guiCtrl = ctrl
         
     def setName(self, tupleName):
+        """Set the players' name"""
         self.P1name = tupleName[0]
         self.P2name = tupleName[1]
         self.currentName.set(self.P1name)
@@ -109,17 +112,3 @@ class GridGui:
         self.matrixButton = [[self.button_00, self.button_01, self.button_02],
             [self.button_10, self.button_11, self.button_12],
                              [self.button_20, self.button_21, self.button_22]]
-
-#--------------------------Test of the class ----------------------
-if __name__ == "__main__":
-
-    fen = Tk()
-    fen.title("test")
-    
-    layout = Canvas(fen,bg= "white" ,height=700, width=1000)
-    layout.pack()
-
-    menu = GridGui("images/GridGui.gif", "images/ButtonGrid.gif", "images/Circle.gif", "images/Cross.gif")
-    menu.display(layout)
-
-    fen.mainloop()

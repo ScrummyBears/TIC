@@ -26,11 +26,14 @@ class TicTacToe:
         self.guiCtrl = None
 
     def reCreate(self):
+        """Re-initialize the class and game"""
         self.window.destroy()
         self.__init__()
         self.initializeGame()
         
-    def initializeGame(self):# initialize the guiControler on the state "menu" : it starts the game
+    def initializeGame(self):#
+        """initialize the guiControler on the state "menu" : it starts the game"""
+        
         menuGui = MenuGui("gui/images/Menu_GUI.gif", "gui/images/PlayButton.gif")
         gridGui = GridGui("gui/images/GridGui.gif", "gui/images/ButtonGrid.gif",
                           "gui/images/Circle.gif", "gui/images/Cross.gif")
